@@ -7,7 +7,7 @@ ctx = Context()
 ctx.matches = r"""
 app: vscode
 tag: user.cursorless
-title: /\.tex/
+title: /\.md/
 """
 
 mod.list("math_big_operator", "Big operators such as sum, product, integral, etc.")
@@ -49,6 +49,10 @@ class Actions:
         """Get the fraction snippet"""
         return "\\frac{$numerator}{$denominator}"
 
+    def square_root_snippet() -> str:
+        """Get the square root snippet"""
+        return "\\sqrt{$body}"
+
     def matrix_snippet(
         rows: int, columns: int, bracket_type: str, matrix_type: str
     ) -> str:
@@ -71,6 +75,9 @@ class Actions:
 
     def maths_fraction():
         actions.user.cursorless_insert_snippet(actions.user.fraction_snippet())
+
+    def maths_square_root():
+        actions.user.cursorless_insert_snippet(actions.user.square_root_snippet())
 
 
 def identity_matrix_get_cell_content(row_idx: int, column_idx: int) -> str:

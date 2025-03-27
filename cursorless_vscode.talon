@@ -1,6 +1,6 @@
 app: vscode
 tag: user.cursorless
-title: /\.tex/
+title: /\.(tex|md)/
 -
 tag(): user.maths
 
@@ -20,15 +20,18 @@ place <user.cursorless_target> under:
     snippet = user.matrix_snippet(number_small, number_small_2 or number_small, bracket_type or "bmatrix", "scalar")
     user.cursorless_wrap_with_snippet(snippet, cursorless_target, "constant")
 
+# Roots
+square root: user.maths_square_root
+square root wrap <user.cursorless_target>:
+    user.cursorless_wrap_with_snippet(user.square_root_snippet(), cursorless_target, "body")
+generic root: user.lyx_control_sequence("m", "r")
+
 # TODO: Implement the stuff below this line
 
 add matrix row: user.lyx_control_sequence("m", "w i")
 (delete | remove) matrix row: user.lyx_control_sequence("m", "w d")
 add matrix column: user.lyx_control_sequence("m", "c i")
 (delete | remove) matrix column: user.lyx_control_sequence("m", "c d")
-
-square root: user.lyx_control_sequence("m", "s")
-generic root: user.lyx_control_sequence("m", "r")
 
 brackets: user.lyx_control_sequence("m", "(")
 square brackets: user.lyx_control_sequence("m", "[")
